@@ -98,3 +98,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tree: {fileID: 259531246879698072, guid: 404ae2655ae5d5843b8a986b8adac3e0, type: 3}
+  canSpaun: 1

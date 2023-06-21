@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class generator : MonoBehaviour
 {
-    [SerializeField]private GameObject river, send, grond, stone,baryer,player;
+    [SerializeField]private GameObject river, send, grond, stone,baryer,player,krepost;
     [SerializeField]private float sid,zoom,n;
     [SerializeField]private int sise,r;
-    [SerializeField]private bool treecan;
+    [SerializeField] List<Vector2> listK = new List<Vector2>();
+    [SerializeField] List<float> Ncol = new List<float>();
     void Start()
     {
+        Time.timeScale = 1;
         DataHolder.StartScore++;
         if (DataHolder.StartScore <= 1)
         {
@@ -22,8 +25,19 @@ public class generator : MonoBehaviour
             sid = DataHolder.sidIS;
         }
         int lenth = sid.ToString().Length;
+        for (int i = 0; i < sise + 1; i++)
+        {
+            for (int j = 0; j < sise + 1; j++)
+            {
+                n = Mathf.PerlinNoise((i + sid) / zoom, (j + sid) / zoom);
 
+                if (n < 0.2) { listK.Add(new Vector2(i, j)); Ncol.Add(n); }
 
+                if (n < 0.5&&  n>0.2) { listK.Add(new Vector2(i, j)); Ncol.Add(n); }
+            }
+        }
+        Ins(krepost, listK[Ncol.IndexOf(Ncol.Max())]);
+        Ins(krepost, listK[Ncol.IndexOf(Ncol.Min())]);
 
         for (int i = 0; i < sise + 1; i++)
         {

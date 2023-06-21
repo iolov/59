@@ -6,10 +6,11 @@ public class movement : MonoBehaviour
 {
     public float speed;
     public Vector2 dic;
-    public Rigidbody2D rb;
+    [SerializeField] Rigidbody2D rb;
+    [SerializeField] Animator animator;
+    [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] private bool trigger;
 
-    public int trigger;
-    public Animator animator;
     void Update()
     {
         dic.x = Input.GetAxisRaw("Horizontal");
@@ -17,8 +18,21 @@ public class movement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position +dic * speed*Time.fixedDeltaTime);
-        animator.SetInteger("trigger",trigger);
-        trigger = 2;
+        if (dic.x == 1) spriteRenderer.flipX = true; else spriteRenderer.flipX = false;
+        if (dic.sqrMagnitude > 0)
+        {
+            trigger = true;
+        }
+        else
+        {
+            trigger = false;
+        }
+        if (Input.GetMouseButton(0))
+        {
+            animator.SetTrigger("punBool");
+        }
+        rb.MovePosition(rb.position + dic * speed * Time.fixedDeltaTime);
+        animator.SetBool("trigBool", trigger);
+        
     }
 }

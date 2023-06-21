@@ -353,7 +353,7 @@ Transform:
   m_GameObject: {fileID: 504590967}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 519420032}
@@ -396,8 +396,9 @@ MonoBehaviour:
   speed: 15
   dic: {x: 0, y: 0}
   rb: {fileID: 504590970}
-  trigger: 0
   animator: {fileID: 504590973}
+  spriteRenderer: {fileID: 504590968}
+  trigger: 0
 --- !u!61 &504590972
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -434,7 +435,7 @@ Animator:
   m_GameObject: {fileID: 504590967}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c7db489f82fec0b4697dbd6f108b623d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 710237e5db0d3ed44b8a194d5858e649, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -691,7 +692,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &672046169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -710,12 +711,14 @@ MonoBehaviour:
   stone: {fileID: 7445734832581066940, guid: 71f0d15f85460be4890c50e5a19953da, type: 3}
   baryer: {fileID: 8082610716056468449, guid: 24f7a331c18883b4fbcba80133136612, type: 3}
   player: {fileID: 504590967}
+  krepost: {fileID: 391288891046246553, guid: c2d2a22a0121d2e4598d6e0f48ced571, type: 3}
   sid: 0
   zoom: 100
   n: 0
   sise: 300
   r: 0
-  treecan: 0
+  listK: []
+  Ncol: []
 --- !u!4 &672046170
 Transform:
   m_ObjectHideFlags: 0
