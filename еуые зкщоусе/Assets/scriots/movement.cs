@@ -10,6 +10,7 @@ public class movement : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] private bool trigger;
+    [SerializeField] float WeapNamb;
 
     void Update()
     {
@@ -18,6 +19,11 @@ public class movement : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        WeapNamb = WeapNamb+ Input.GetAxis("Mouse ScrollWheel");
+        if (WeapNamb < -0.5f) WeapNamb = 0.5f;
+
+        if (WeapNamb > 0.5f) WeapNamb = -0.5f;
+        
         if (dic.x == 1) spriteRenderer.flipX = true; else spriteRenderer.flipX = false;
         if (dic.sqrMagnitude > 0)
         {
@@ -33,6 +39,6 @@ public class movement : MonoBehaviour
         }
         rb.MovePosition(rb.position + dic * speed * Time.fixedDeltaTime);
         animator.SetBool("trigBool", trigger);
-        
+        animator.SetFloat("WeapNamb", WeapNamb);
     }
 }
